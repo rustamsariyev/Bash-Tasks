@@ -3,6 +3,8 @@
 # This script changes and increment strings
 # You will be promted to enter XML_URL and save location
 
+# Bash debugging. If you only want debug output in a specific section of the script, put set -x before and set +x after the section.
+set -x
 # Make sure the script is being executed with superuser privileges.
 if [[ "${UID}" -ne 0 ]]
 then
@@ -32,6 +34,9 @@ do
 	sed "s/Title/Title$i/g ; s/Artist/Artist$m/g" $XML_URL > Text$i
 	mv Text* "$XML_SAVE/Copied"
 done
+
+# If you only want debug output in a specific section of the script, put set -x before and set +x after the section.
+set +x
 
 # If command not successfully executed change exit status 1 
 if [[ "${?}" -ne 0 ]]
